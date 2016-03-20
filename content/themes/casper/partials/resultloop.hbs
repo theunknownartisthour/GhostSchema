@@ -1,0 +1,97 @@
+{{! Here we're accessing a different object named from it's target, now this template can be looped through for any specific result type}}
+{{#if products.results}}
+{{#foreach products.results}}
+    <article class="{{post_class}}">
+        <header class="post-header">
+            <h2 class="post-title">{{{name}}}</h2>
+        </header>
+        <section class="post-excerpt">
+            <p>{{#if summary}}{{{summary}}}<br><br>{{/if}}
+            Type: {{#if subscription_interval}}{{{subscription_interval}}}{{/if}} {{{type}}}
+            <br>Price: {{{price}}} {{{currency}}}
+            </p>
+        </section>
+        <footer class="post-meta">
+            <a href="/s_products/{{id}}">More</a>
+            <a href="/s_products/related/variants?parent_id={{id}}">Variants</a>
+            {{#if category_id}}<a href="/s_categories/related/products?parent_id={{id}}">Categories</a>{{/if}}
+            <a href="/s_products/related/stock?parent_id={{id}}">Stock</a>
+            <a href="/s_products/related/reviews?parent_id={{id}}">Reviews</a>
+            <!--<time class="post-date" datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMMM YYYY"}}</time>-->
+        </footer>
+    </article>
+{{/foreach}}
+{{else}}
+{{#products}}
+    {{! A single result...expand as much templated info as possible! }}
+    <article class="{{post_class}}">
+        <header class="post-header">
+            <h2 class="post-title">{{{name}}}</h2>
+        </header>
+        <section class="post-excerpt">
+            <p>{{#if virtual}}Virtual Product {{/if}}{{#if bundle}}Bundle {{/if}}</p>
+            <p>{{#if description}}{{{description}}}<br><br>{{/if}}
+            Type: {{#if subscription_interval}}{{{subscription_interval}}}{{/if}} {{{type}}}
+            {{#if subscription_interval_count}}<br>Repeats {{{subscription_interval_count}}} times{{/if}}
+            {{#if subscription_trial_days}}<br>Trial {{{subscription_trial_days}}} days{{/if}}
+            <br>Price: {{{price}}} {{{currency}}}
+            <br>Sale Price: {{{sale_price}}} {{{currency}}}
+            </p>
+        </section>
+        <footer class="post-meta">
+            <a href="/s_products/">Products</a>
+            <a href="/s_products/related/variants?parent_id={{id}}">Variants</a>
+            {{#if category_id}}<a href="/s_categories/related/products?parent_id={{id}}">Categories</a>{{/if}}
+            <a href="/s_products/related/stock?parent_id={{id}}">Stock</a>
+            <a href="/s_products/related/reviews?parent_id={{id}}">Reviews</a>
+            <!--<time class="post-date" datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMMM YYYY"}}</time>-->
+        </footer>
+    </article>
+{{/products}}
+{{/if}}
+
+{{! Here we're accessing a different object named from it's target, now this template can be looped through for any specific result type}}
+{{#if accounts.results}}
+{{#foreach accounts.results}}
+    <article class="{{post_class}}">
+        <header class="post-header">
+            <h2 class="post-title"><a href="/s_accounts/{{id}}">{{{name}}}</a></h2>
+        </header>
+        <section class="post-excerpt">
+            <p>
+            Type: {{{type}}}
+            {{#if email}}<br>Email: {{{email}}}{{/if}}
+            {{#if phone}}<br>Phone: {{{phone}}}{{/if}}
+            {{#if group}}<br>Group: {{{group}}}{{/if}}
+            {{#if currency}}<br>Prices in {{{currency}}}{{/if}}
+            {{#if balance}}<br>{{{balance}}}{{/if}}
+            </p>
+        </section>
+        <footer class="post-meta">
+            
+        </footer>
+    </article>
+{{/foreach}}
+{{else}}
+{{#accounts}}
+    {{! A single result...expand as much templated info as possible! }}
+    <article class="{{post_class}}">
+        <header class="post-header">
+            <h2 class="post-title"><a href="/s_accounts/{{id}}">{{{name}}}</a></h2>
+        </header>
+        <section class="post-excerpt">
+            <p>
+            Type: {{{type}}}
+            {{#if email}}<br>Email: {{{email}}}{{/if}}
+            {{#if phone}}<br>Phone: {{{phone}}}{{/if}}
+            {{#if group}}<br>Group: {{{group}}}{{/if}}
+            {{#if currency}}<br>Prices in {{{currency}}}{{/if}}
+            {{#if balance}}<br>{{{balance}}}{{/if}}
+            </p>
+        </section>
+        <footer class="post-meta">
+            <a href="/s_accounts/">Accounts</a>
+        </footer>
+    </article>
+{{/accounts}}
+{{/if}}
