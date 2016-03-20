@@ -34,7 +34,7 @@ var schemaRoutes = config2.schema.routes || [
 ];
 var schemaRelateable = config2.schema.related || ['variants','stock','reviews','options'];
 if(config2.schema.slug != '' && config2.schema.client_id != '' && config2.schema.client_key != '' && config2.schema.routes != ''){
-    var client = new Schema.Client(config2.schema.client_id,config.schema.client_key);
+    var client = new Schema.Client(config2.schema.client_id,config2.schema.client_key);
 }
 var schemaUrls = '('+schemaRoutes.join('|')+')';/*JSON.stringify(schemaRoutes);*/
 
@@ -83,6 +83,12 @@ function schemaHandler(err,data,res,req,target,model){
 }
 
 function schemaIT(req,res,next){
+    if(typeof client === "undefined"){
+        /*err client was not setup*/
+        res.Rerror = 'Schema Not Properly Configured config.schema.client_key and config.schema.client_id not set in config.js!';
+        res.Rerrorcode = 601;
+        return frontend.results(req,res);
+    }
 	var urls = schemaRoutes;
     /*console.log('Urls: '+urls);*/
     console.log('Path: '+req.path);
