@@ -57,6 +57,7 @@ Router.map(function () {
     this.route('settings.navigation', {path: '/settings/navigation'});
     this.route('settings.apps', {path: '/settings/apps'}, function () {
         this.route('slack', {path: 'slack'});
+        this.route('schema_io', {path: 'schema'});
     });
 
     this.route('error404', {path: '/*path'});

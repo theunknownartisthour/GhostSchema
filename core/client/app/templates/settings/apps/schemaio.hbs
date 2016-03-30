@@ -1,0 +1,44 @@
+<header class="view-header">
+    {{#gh-view-title openMobileMenu="openMobileMenu"}}<span>Apps <i class="icon-arrow-right" style="display:inline"></i> Slack</span>{{/gh-view-title}}
+    <section class="view-actions">
+        {{#link-to "settings.apps" class="btn btn-red" title="Disable"}}Disable{{/link-to}}
+    </section>
+</header>
+<section class="view-container">
+    <section class="view-content">
+        <section class="slack-grid">
+            <div class="slack-cell">
+                <img class="slack-icon" style="background-image:url({{gh-path 'admin' '/img/schemaio.png'}})"/>
+            </div>
+            <div class="slack-cell">
+                <h3>Schema</h3>
+                <p>An Ecommerce API</p>
+            </div>
+        </section>
+
+        <section class="slack-subtitle">
+            <p>The Slack app for Ghost allows you to automatically send newly published posts to a channel in your Slack team.</p>
+        </section>
+
+        <section class="slack-config-form">
+            {{#gh-form-group errors=model.errors hasValidated=model.hasValidated property="secretkey"}}
+                <label for="secretkey">Secret Key</label>
+                {{gh-input id="secretkey" class="gh-input"}}
+                {{gh-error-message errors=model.errors property="secretkey"}}
+                <p>Your slack webhook URL or whatever</p>
+            {{/gh-form-group}}
+
+            {{#gh-form-group errors=model.errors hasValidated=model.hasValidated property="clientid"}}
+                <label for="clientid">Client ID</label>
+                {{gh-input id="clientid" class="gh-input"}}
+                {{gh-error-message errors=model.errors property="clientid"}}
+                <p>hint: clientid.schema.io</p>
+            {{/gh-form-group}}
+            <p>
+                Get Your Secret Keys: <a href="https://{{clientid}}.schema.io/system/account" target="_blank">https://{{clientid}}.schema.io/system/account</a>
+            </p>
+            
+            {{#link-to "settings.apps" class="btn btn-grey" title="Send Test Notification"}}Send Test Notification{{/link-to}}
+        </section>
+    </section>
+</section>
