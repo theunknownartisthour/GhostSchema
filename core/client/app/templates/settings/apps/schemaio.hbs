@@ -1,44 +1,49 @@
 <header class="view-header">
-    {{#gh-view-title openMobileMenu="openMobileMenu"}}<span>Apps <i class="icon-arrow-right" style="display:inline"></i> Slack</span>{{/gh-view-title}}
+    {{#gh-view-title openMobileMenu="openMobileMenu"}}<span>{{#link-to "settings.apps" title="Apps"}}Apps{{/link-to}} <i class="icon-arrow-right" style="display:inline"></i> Schema</span>{{/gh-view-title}}
     <section class="view-actions">
-        {{#link-to "settings.apps" class="btn btn-red" title="Disable"}}Disable{{/link-to}}
+        {{#gh-spin-button class="btn btn-blue" action="save" submitting=submitting}}Save{{/gh-spin-button}} {{#link-to "settings.apps" class="btn btn-red" title="Disable"}}Disable{{/link-to}}
     </section>
 </header>
 <section class="view-container">
     <section class="view-content">
-        <section class="slack-grid">
-            <div class="slack-cell">
-                <img class="slack-icon" style="background-image:url({{gh-path 'admin' '/img/schemaio.png'}})"/>
+        <section class="schema-io-grid">
+            <div class="schema-io-cell">
+                <img class="schema-io-icon" style="background-image:url({{gh-path 'admin' '/img/schemaio.png'}})"/>
             </div>
-            <div class="slack-cell">
+            <div class="schema-io-cell">
                 <h3>Schema</h3>
                 <p>An Ecommerce API</p>
             </div>
         </section>
 
-        <section class="slack-subtitle">
-            <p>The Slack app for Ghost allows you to automatically send newly published posts to a channel in your Slack team.</p>
+        <section class="schema-io-subtitle">
+            <p>The Schema.io App integrates Schema's ecommerce api with Ghost's templating engine...cough...it runs a shop.</p>
+            <p><a class="btn btn-minor" href="https://schema.io/" target="_blank">Learn More</a><a class="btn btn-minor" href="https://schema.io/docs" target="_blank">Docs</a><a class="btn btn-minor" href="https://schema.io/new" target="_blank">Get An Account</a></p>
         </section>
 
-        <section class="slack-config-form">
-            {{#gh-form-group errors=model.errors hasValidated=model.hasValidated property="secretkey"}}
-                <label for="secretkey">Secret Key</label>
-                {{gh-input id="secretkey" class="gh-input"}}
-                {{gh-error-message errors=model.errors property="secretkey"}}
-                <p>Your slack webhook URL or whatever</p>
-            {{/gh-form-group}}
-
+        <section class="schema-io-config-form">
             {{#gh-form-group errors=model.errors hasValidated=model.hasValidated property="clientid"}}
                 <label for="clientid">Client ID</label>
-                {{gh-input id="clientid" class="gh-input"}}
+                {{gh-input value=clientid id="clientid" class="gh-input"}}
                 {{gh-error-message errors=model.errors property="clientid"}}
                 <p>hint: clientid.schema.io</p>
             {{/gh-form-group}}
+            
             <p>
                 Get Your Secret Keys: <a href="https://{{clientid}}.schema.io/system/account" target="_blank">https://{{clientid}}.schema.io/system/account</a>
             </p>
+        
+            {{#gh-form-group errors=model.errors hasValidated=model.hasValidated property="schemasecretkey"}}
+                <label for="schemasecretkey">Secret Key</label>
+                {{gh-input value=schemaiokey id="schemasecretkey" class="gh-input"}}
+                {{gh-error-message errors=model.errors property="schemasecretkey"}}
+                <p>Your Secret Key for Schema's API</p>
+            {{/gh-form-group}}
             
-            {{#link-to "settings.apps" class="btn btn-grey" title="Send Test Notification"}}Send Test Notification{{/link-to}}
+            <p>
+                Test Products API: <a href="https://{{clientid}}:{{schemaiokey}}@api.schema.io/products" target="_blank">https://{{clientid}}:{{schemaiokey}}@api.schema.io/products</a>
+            </p>
         </section>
+        
     </section>
 </section>

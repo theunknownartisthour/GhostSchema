@@ -22,6 +22,6 @@ export default Model.extend(ValidationEngine, {
     navigation: attr('string'),
     isPrivate: attr('boolean'),
     password: attr('string'),
-    schema_io: attr('string'),
+    schemaio: attr('string'),
     slack: attr('string')
 });
