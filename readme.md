@@ -114,3 +114,11 @@ New releases are announced on the [dev blog](http://dev.ghost.org/tag/releases/)
 # Copyright & License
 
 Copyright (c) 2013-2016 Ghost Foundation - Released under the [MIT license](LICENSE).
+
+#Schema Integration
+
+Schema.io is integrated into the backend as an app, add your credentials and you're done! You will have access to a fully integrated and customizeable shop.
+
+![SchemaIO App](https://googledrive.com/host/0BwpFKuT8DC6ZMEVNZUJJaFRuTFk/SchemaGhostAppStart.PNG)
+
+![SchemaIO App Settings](https://googledrive.com/host/0BwpFKuT8DC6ZMEVNZUJJaFRuTFk/SchemaGhostApp.PNG)
